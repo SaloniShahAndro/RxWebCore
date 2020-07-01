@@ -23,8 +23,6 @@ steps:
   inputs:
     command: restore
     projects: 'src/AspNetCore/RxWeb.Core.AspNetCore/*.csproj'
-    feedsToUse: config
-    nugetConfigPath: NuGet.config    # Relative to root of the repository
 
 - task: DotNetCoreCLI@2
   inputs:
