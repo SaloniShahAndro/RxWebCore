@@ -32,6 +32,13 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+    command: 'test'
+    arguments: '--configuration $(buildConfiguration) /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
+    publishTestResults: true
+    projects: 'src/AspNetCore/RxWeb.Core.AspNetCore/*.csproj' # update with your test project directory
+- task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
     publishWebProjects: false
