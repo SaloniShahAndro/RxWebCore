@@ -17,8 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\Rxweb.Core.Annotations\RxWeb.Core.Annotations.csproj" ><ReferenceOutputAssembly>true</ReferenceOutputAssembly>
-      <IncludeAssets>RxWeb.Core.Annotations.dll</IncludeAssets></ProjectReference>
+    <ProjectReference Include="..\..\Common\Rxweb.Core.Annotations\RxWeb.Core.Annotations.csproj" ></ProjectReference>
     <ProjectReference Include="..\..\Common\RxWeb.Core.Repository\RxWeb.Core.Data.csproj" />
     <ProjectReference Include="..\..\Common\Rxweb.Core.Sanitizers\RxWeb.Core.Sanitizers.csproj" />
     <ProjectReference Include="..\..\Common\RxWeb.Core.Security\RxWeb.Core.Security.csproj" />
