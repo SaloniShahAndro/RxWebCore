@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -6,6 +6,7 @@
     <Authors>Ajay Ojha</Authors>
     <Company>RxWeb</Company>
     <Product>RxWeb.Core.AspNetCore</Product>
+   <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,12 +17,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference PrivateAssets="all" Include="..\..\Common\Rxweb.Core.Annotations\RxWeb.Core.Annotations.csproj" />
+    <ProjectReference Include="..\..\Common\Rxweb.Core.Annotations\RxWeb.Core.Annotations.csproj" ></ProjectReference>
     <ProjectReference Include="..\..\Common\RxWeb.Core.Repository\RxWeb.Core.Data.csproj" />
     <ProjectReference Include="..\..\Common\Rxweb.Core.Sanitizers\RxWeb.Core.Sanitizers.csproj" />
     <ProjectReference Include="..\..\Common\RxWeb.Core.Security\RxWeb.Core.Security.csproj" />
     <ProjectReference Include="..\..\Common\RxWeb.Core\RxWeb.Core.csproj" />
   </ItemGroup>
    
-  
+   <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
+    </ItemGroup>
+  </Target>
+
 </Project>
