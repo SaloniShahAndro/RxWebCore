@@ -42,7 +42,7 @@ steps:
   inputs:
     command: 'pack'
     packagesToPack: 'src/AspNetCore/RxWeb.Core.AspNetCore/*.csproj'
-    configuration: '$(BuildConfiguration) --output nupkgs'
+    configuration: '--output nupkgs'
     nobuild: true
     versioningScheme: 'off'
 - task: DotNetCoreCLI@2
