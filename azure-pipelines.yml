@@ -40,6 +40,12 @@ steps:
     projects: 'src/AspNetCore/RxWeb.Core.AspNetCore/*.csproj' # update with your test project directory
 - task: DotNetCoreCLI@2
   inputs:
+    command: 'pack'
+    packagesToPack: 'src/AspNetCore/RxWeb.Core.AspNetCore/*.csproj'
+    nobuild: true
+    versioningScheme: 'off'
+- task: DotNetCoreCLI@2
+  inputs:
     command: 'publish'
     publishWebProjects: false
     projects: 'src/AspNetCore/RxWeb.Core.AspNetCore/*.csproj'
