@@ -6,6 +6,7 @@
     <Authors>Ajay Ojha</Authors>
     <Company>RxWeb</Company>
     <Product>RxWeb.Core.AspNetCore</Product>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
