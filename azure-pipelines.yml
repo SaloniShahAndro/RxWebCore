@@ -75,6 +75,8 @@ steps:
     nuGetFeedType: external
     versioningScheme: byEnvVar
     versionEnvVar: <VersionVariableName>
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    
 
 # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
 - task: PublishBuildArtifacts@1
