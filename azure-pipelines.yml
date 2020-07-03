@@ -81,7 +81,7 @@ steps:
   displayName: 'Push NuGet Package'
   inputs:
     command: 'push'
-    packagesToPush: 'Rxwebcore/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/Rxwebcore/*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'NuGet'
 
