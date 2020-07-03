@@ -32,6 +32,12 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet build  $(buildConfiguration) Common'
+  inputs:
+    projects: 'src/Common/**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
   displayName: 'dotnet test'
   inputs:
     command: 'test'
@@ -44,6 +50,14 @@ steps:
     packagesToPack: 'src/AspNetCore/RxWeb.Core.AspNetCore/*.csproj'
     versioningScheme: 'off'
   displayName: 'dotnet pack'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack common'
+  inputs:
+    command: pack
+    packagesToPack: 'src/Common/**/*.csproj'
+
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
@@ -51,6 +65,16 @@ steps:
     projects: 'src/AspNetCore/RxWeb.Core.AspNetCore/*.csproj'
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
   displayName: 'dotnet Publish'
+
+- task: NuGetAuthenticate@0
+  inputs:
+    nuGetServiceConnections: 'Connect to Nuget.org'
+- task: NuGetCommand@2
+  inputs:
+    command: push
+    nuGetFeedType: external
+    versioningScheme: byEnvVar
+    versionEnvVar: <VersionVariableName>
 
 # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
 - task: PublishBuildArtifacts@1
