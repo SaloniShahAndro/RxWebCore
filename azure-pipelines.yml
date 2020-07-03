@@ -81,7 +81,7 @@ steps:
   displayName: 'Push NuGet Package'
   inputs:
     command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    packagesToPush: '$(Pipeline.Workspace)/**/drop/*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'NuGet'
 
