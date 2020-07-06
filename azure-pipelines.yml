@@ -41,7 +41,7 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build  $(buildConfiguration) Aspnetcore'
   inputs:
-    projects: 'src/VsixProject/AspNetCoreVsix/*.csproj'
+    projects: 'src/CleanArchitecture/Api/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
@@ -68,7 +68,7 @@ steps:
   displayName: 'dotnet pack common'
   inputs:
     command: pack
-    packagesToPack: 'src/VsixProject/AspNetCoreVsix/*.csproj'
+    packagesToPack: 'src/CleanArchitecture/Api/*.csproj'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
